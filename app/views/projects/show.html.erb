@@ -1,4 +1,30 @@
-<p id="notice"><%= notice %></p>
+<h1><%= @project.name %></h1>
+<br>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<h2>User: <%= current_user.email %></h2>
+<h2>Rol: <%= @role %></h2>
+
+<h3>
+  <% if policy(@project).show? %>
+    Puede ver este proyecto <br>
+  <% else %>
+    No puede ver este proyecto <br>
+  <% end %>
+  <% if policy(@project).update? %>
+    Puede editar este proyecto <br>
+  <% else %>
+    No puede editar este proyecto <br>
+  <% end %>
+  <% if policy(@project).delete? %>
+    Puede borrar este proyecto <br>
+  <% else %>
+    No puede borrar este proyecto <br>
+  <% end %>
+  <% if policy(@project).assing? %>
+    Puede asignar gente a este proyecto <br>
+  <% else %>
+    No puede asignar gente a este proyecto <br>
+  <% end %>
+  <br>
+  <%= link_to "Back", root_path %>
+</h3>

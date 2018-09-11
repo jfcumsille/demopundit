@@ -1,6 +1,10 @@
 <h1> Pages#home </h1>
 
 <% if current_user %>
+  <% Project.all.each do |p| %>
+    <%= link_to p.name, p %>
+  <% end %>
+  <br>
   <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
 
 <% else %>

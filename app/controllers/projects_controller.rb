@@ -10,6 +10,9 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @project = Project.find(params[:id])
+    @role = UserJoinProject.where('user_id = ? AND project_id = ?',
+                                  current_user.id, @project.id)[0].role.name
   end
 
   # GET /projects/new
